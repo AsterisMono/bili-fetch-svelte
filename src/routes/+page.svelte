@@ -1,5 +1,6 @@
 <script>
 	import StatusWheel from './video/[bvid]/StatusWheel.svelte';
+	import { status } from './video/[bvid]/statusStore';
 </script>
 
 <div class="page relative h-full">
@@ -15,5 +16,13 @@
 				</p>
 			</div>
 		</section>
+		<button
+			on:click={() => {
+				status.set({
+					statusMessage: '测试',
+					progress: 50
+				});
+			}}>Magic Button</button
+		>
 	</main>
 </div>
