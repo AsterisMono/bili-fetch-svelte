@@ -2,10 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--status-text-size: 2.8rem;
+}
+
+@media screen(sm) {
+	:root {
+		--status-text-size: 4.5rem;
+	}
+}
+
+.status-wheel-frame {
+	height: var(--status-text-size);
+}
+
+.status-wheel {
+	line-height: 1;
+	gap: var(--status-text-size);
+}
+
+.status-item {
+	font-size: var(--status-text-size);
+	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	.status-item {
+		text-align: unset;
+	}
+}
+
 .page {
 	background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%) center / cover;
 	background-size: 400% 400%;
 	animation: animated-gradient 8s ease infinite;
+}
+
+body {
+	color: rgb(37, 37, 37);
 }
 
 @keyframes animated-gradient {
@@ -18,4 +52,9 @@
 	to {
 		background-position: 0 0;
 	}
+}
+
+.message-bar.message-normal,
+.message-bar.message-error {
+	@apply text-gray-500;
 }
