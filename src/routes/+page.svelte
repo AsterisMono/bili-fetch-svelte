@@ -1,6 +1,9 @@
 <script>
+	import MessageBar from './video/[bvid]/MessageBar.svelte';
 	import StatusWheel from './video/[bvid]/StatusWheel.svelte';
-	import { status } from './video/[bvid]/statusStore';
+	import { infoMessage, status } from './video/[bvid]/statusStore';
+
+	let count = 1;
 </script>
 
 <div class="page relative h-full">
@@ -9,11 +12,7 @@
 		<section class="w-full h-full flex flex-col justify-center">
 			<div class="mx-auto flex flex-col gap-20 lg:ml-56">
 				<StatusWheel />
-				<p
-					class="px-4 lg:px-0 message-bar message-normal font-medium text-lg text-center lg:text-left tracking-wider transition-all duration-500"
-				>
-					请稍等片刻
-				</p>
+				<MessageBar />
 			</div>
 		</section>
 		<button
@@ -22,6 +21,8 @@
 					statusMessage: '已完成',
 					progress: 50
 				});
+				infoMessage.set(`${count}`);
+				count = count + 1;
 			}}>Magic Button</button
 		>
 	</main>

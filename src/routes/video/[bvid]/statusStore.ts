@@ -8,3 +8,5 @@ export const status = writable<Status>({
 
 export const statusMessage = derived(status, ($status) => $status.statusMessage);
 export const progress = derived(status, ($status) => $status.progress);
+
+export const infoMessage = writable<string>('请稍等片刻');
