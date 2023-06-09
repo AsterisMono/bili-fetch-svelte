@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import { statusMessage } from './statusStore';
+	import { statusMessage } from './StatusStore';
 
 	let statusList: string[] = [];
 	statusMessage.subscribe(($statusMessage) => {

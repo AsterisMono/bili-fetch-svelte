@@ -1,7 +1,7 @@
 <script>
 	import MessageBar from './video/[bvid]/MessageBar.svelte';
 	import StatusWheel from './video/[bvid]/StatusWheel.svelte';
-	import { infoMessage, status } from './video/[bvid]/statusStore';
+	import { infoMessage, status } from './video/[bvid]/StatusStore';
 
 	let count = 1;
 </script>

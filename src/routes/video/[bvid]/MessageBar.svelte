@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { infoMessage } from './statusStore';
+	import { infoMessage } from './StatusStore';
 
 	let msg = '请稍等片刻';
 	let opacity = 1;

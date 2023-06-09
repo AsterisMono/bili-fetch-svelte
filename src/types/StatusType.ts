@@ -9,3 +9,8 @@ export type Status = {
 		| '( ´ﾟДﾟ`)';
 	progress: number;
 };
+
+export type StructuredMessage = {
+	markdown: string;
+	time: number;
+};
