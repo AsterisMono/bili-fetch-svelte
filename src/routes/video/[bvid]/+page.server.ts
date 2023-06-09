@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import type { BiliCidResult, BiliInfoResult, BiliVideoResult } from '../../../types/biliTypes';
+import type { BiliCidResult, BiliInfoResult, BiliVideoResult } from '../../../types/BiliTypes';
 import { panic } from '../../../types/Error';
 import { HttpError, error } from '@sveltejs/kit';
 
