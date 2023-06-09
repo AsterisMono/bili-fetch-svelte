@@ -13,7 +13,6 @@
 	const onMediaChange = (e: MediaQueryListEvent) => {
 		if (e.matches) statusTextSize = 2.8;
 		else statusTextSize = 4.5;
-		// statusWheel.style.transform = computeTranslateY(statusIterationsCount);
 	};
 
 	let mediaWatcher: MediaQueryList;
@@ -26,13 +25,19 @@
 	onDestroy(() => {
 		if (mediaWatcher) mediaWatcher.removeEventListener('change', onMediaChange); // TODO: Why this unloads first?
 	});
+
+	// Calculate status translateY
+	$: translateY = -2 * statusTextSize * (statusList.length - 1);
 </script>
 
 <article
 	class="status-wheel-frame font-light tracking-wide overflow-hidden"
 	style="--status-text-size: {statusTextSize}rem"
 >
-	<div class="status-wheel transition-all duration-500 flex flex-col">
+	<div
+		class="status-wheel transition-all duration-500 flex flex-col"
+		style="transform: translateY({translateY}rem);"
+	>
 		{#each statusList as status}
 			<p class="status-item">{status}</p>
 		{/each}
@@ -43,12 +48,6 @@
 	.status-wheel-frame {
 		height: var(--status-text-size);
 	}
-
-	/* @media screen(sm) {
-		.status-wheel-frame {
-			--status-text-size: 4.5rem;
-		}
-	}  */
 
 	.status-wheel {
 		line-height: 1;
