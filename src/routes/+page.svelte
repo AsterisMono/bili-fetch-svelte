@@ -26,3 +26,24 @@
 		>
 	</main>
 </div>
+
+<style>
+	.page {
+		background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%) center / cover;
+		background-size: 400% 400%;
+		animation: animated-gradient 8s ease infinite;
+		color: rgb(37, 37, 37);
+	}
+
+	@keyframes animated-gradient {
+		0% {
+			background-position: 0 0;
+		}
+		50% {
+			background-position: 50% 100%;
+		}
+		to {
+			background-position: 0 0;
+		}
+	}
+</style>
