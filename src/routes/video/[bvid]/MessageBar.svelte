@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { StructuredMessage } from '../../../types/StatusType';
 	import { infoMessage } from './StatusStore';
 
 	let msg = '请稍等片刻';
@@ -6,19 +7,19 @@
 	let ref: HTMLParagraphElement;
 	let ongoingPromises: Promise<void>[] = [];
 
-	const statusMessageHandler = async (message: string) => {
+	const statusMessageHandler = async (message: StructuredMessage) => {
 		await ongoingPromises.at(-1); // Form an await chain
-		if (message == msg) return;
+		if (message.markdown == msg) return;
 		return new Promise<void>((resolve) => {
 			if (!ref) resolve();
 			opacity = 0;
 			const onMsgHidden = () => {
-				msg = message;
+				msg = message.markdown; // TODO: Parse Markdown
 				opacity = 1;
 				ref.removeEventListener('transitionend', onMsgHidden);
 			};
 			ref.addEventListener('transitionend', onMsgHidden);
-			setTimeout(resolve, 1000); // TODO: structured message
+			setTimeout(resolve, message.time);
 		});
 	};
 

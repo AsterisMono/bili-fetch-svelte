@@ -21,7 +21,10 @@
 					statusMessage: '已完成',
 					progress: 50
 				});
-				infoMessage.set(`${count}`);
+				infoMessage.set({
+					markdown: `${count}`,
+					time: count * 1000
+				});
 				count = count + 1;
 			}}>Magic Button</button
 		>
