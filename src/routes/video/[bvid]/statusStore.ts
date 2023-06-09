@@ -1,5 +1,6 @@
 import { derived, writable } from 'svelte/store';
-import type { Status, StructuredMessage } from '$lib/types/StatusType';
+import type { Status } from '$lib/types/StatusType';
+import type { StructuredMessage } from '$lib/types/StructuredMessage';
 
 export const status = writable<Status>({
 	statusMessage: '加载中...',
