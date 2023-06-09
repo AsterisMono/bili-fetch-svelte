@@ -19,7 +19,7 @@
 		<button
 			on:click={() => {
 				status.set({
-					statusMessage: '测试',
+					statusMessage: '已完成',
 					progress: 50
 				});
 			}}>Magic Button</button
