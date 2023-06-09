@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onDestroy, onMount } from 'svelte';
 	import { statusMessage } from './statusStore';
 
 	let statusList: string[] = [];
@@ -6,8 +7,25 @@
 		statusList = [...statusList, $statusMessage];
 	});
 
+	// Dynamic status text size with media query
 	let statusTextSize = 4.5;
-	// FIXME: Dynamic status text size with media query
+
+	const onMediaChange = (e: MediaQueryListEvent) => {
+		if (e.matches) statusTextSize = 2.8;
+		else statusTextSize = 4.5;
+		// statusWheel.style.transform = computeTranslateY(statusIterationsCount);
+	};
+
+	let mediaWatcher: MediaQueryList;
+	onMount(() => {
+		mediaWatcher = window.matchMedia('(max-width: 640px)');
+		mediaWatcher.addEventListener('change', onMediaChange);
+	});
+
+	// Clear the media watcher on component unload
+	onDestroy(() => {
+		if (mediaWatcher) mediaWatcher.removeEventListener('change', onMediaChange); // TODO: Why this unloads first?
+	});
 </script>
 
 <article
