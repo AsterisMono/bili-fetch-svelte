@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { StructuredMessage } from '../../../types/StatusType';
+	import type { StructuredMessage } from '$lib/types/StructuredMessage';
 	import { infoMessage } from './StatusStore';
 
 	let msg = '请稍等片刻';

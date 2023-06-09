@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
-import type { BiliCidResult, BiliInfoResult, BiliVideoResult } from '../../../types/BiliTypes';
-import { panic } from '../../../types/Error';
+import type { BiliCidResult, BiliInfoResult, BiliVideoResult } from '$lib/types/BiliTypes';
+import { panic } from '$lib/types/Error';
 import { HttpError, error } from '@sveltejs/kit';
 
 export const load = (async ({ params }) => {
