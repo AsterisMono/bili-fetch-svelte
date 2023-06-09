@@ -35,3 +35,10 @@
 >
 	{msg}
 </p>
+
+<style>
+	.message-bar.message-normal {
+		--tw-text-opacity: 1;
+		color: rgb(107 114 128 / var(--tw-text-opacity));
+	}
+</style>
