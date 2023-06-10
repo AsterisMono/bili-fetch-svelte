@@ -1,9 +1,13 @@
 import type { PageServerLoad } from './$types';
 import type { BiliCidResult, BiliInfoResult, BiliVideoResult } from '$lib/types/BiliTypes';
 import { panic } from '$lib/types/Error';
-import { HttpError, error } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, setHeaders }) => {
+	setHeaders({
+		'Cross-Origin-Opener-Policy': 'same-origin',
+		'Cross-Origin-Embedder-Policy': 'require-corp'
+	});
 	const bvid = params.bvid;
 	const biliCidUrl = `https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`;
 	const cid = await fetch(biliCidUrl)
