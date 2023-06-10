@@ -92,6 +92,11 @@
 			updateProgress(1.0);
 			await updateStatus('已完成');
 			offerFileAsDownload(ffmpeg, getFileName('out', 'mp3'), `${videoTitle}.mp3`);
+
+			await new Promise((resolve, reject) => setTimeout(resolve, 700));
+			updateMessage('喜欢吗？', 1000, () => {
+				updateMessage('谢谢。开发者已经收到你的👍。');
+			});
 		} catch (e) {
 			if (typeof e === 'object' && e !== null && 'message' in e && typeof e.message === 'string') {
 				DisplayClientError(e.message);
