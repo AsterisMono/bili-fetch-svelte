@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { StructuredMessage } from '$lib/types/StructuredMessage';
-	import { infoMessage } from './StatusStore';
+	import { infoMessage } from '$lib/utils/StatusStore';
 
 	let msg = '请稍等片刻';
 	let opacity = 1;
@@ -19,7 +19,7 @@
 				ref.removeEventListener('transitionend', onMsgHidden);
 			};
 			ref.addEventListener('transitionend', onMsgHidden);
-			setTimeout(resolve, message.time);
+			setTimeout(resolve, message.time || 1000);
 		});
 	};
 
