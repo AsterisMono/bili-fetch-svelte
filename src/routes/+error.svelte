@@ -9,3 +9,7 @@
 		updateProgress(0);
 	});
 </script>
+
+<svelte:head>
+	<title>出错啦！</title>
+</svelte:head>
