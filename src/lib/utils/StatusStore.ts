@@ -13,7 +13,7 @@ export async function nextStatus(newStatus: string) {
 	});
 }
 
-export async function nextMessage(newMessage: string, time: number = 1000) {
+export async function nextMessage(newMessage: string, time: number = 0) {
 	return new Promise<void>((resolve) => {
 		message.set(newMessage);
 		setTimeout(resolve, time);
