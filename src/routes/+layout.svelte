@@ -2,11 +2,12 @@
 	import '../app.css';
 	import StatusWheel from './video/[bvid]/StatusWheel.svelte';
 	import MessageBar from './video/[bvid]/MessageBar.svelte';
+	import ProgressBar from './video/[bvid]/ProgressBar.svelte';
 </script>
 
 <main class="page h-screen">
 	<div class="relative h-full">
-		<div class="progress-bar absolute top-0 left-0" />
+		<ProgressBar />
 		<main class="w-full h-full flex flex-row">
 			<section class="w-full h-full flex flex-col justify-center">
 				<div class="mx-auto flex flex-col gap-20 lg:ml-56">

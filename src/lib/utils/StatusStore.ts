@@ -19,3 +19,7 @@ export async function nextMessage(newMessage: string, time: number = 0) {
 		setTimeout(resolve, time);
 	});
 }
+
+export async function nextProgress(newProgress: number) {
+	progress.set(newProgress);
+}

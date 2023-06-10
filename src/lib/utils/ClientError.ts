@@ -1,7 +1,7 @@
-import { progress, nextStatus, nextMessage } from './StatusStore';
+import { progress, nextStatus, nextMessage, nextProgress } from './StatusStore';
 
 export function DisplayClientError(msg: string) {
 	nextStatus('( ´ﾟДﾟ`)');
 	nextMessage(msg);
-	progress.set(0);
+	nextProgress(0);
 }
