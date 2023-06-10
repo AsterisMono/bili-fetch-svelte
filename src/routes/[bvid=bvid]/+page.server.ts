@@ -13,7 +13,7 @@ export const load = (async ({ params, setHeaders }) => {
 		.then((r) => r.json())
 		.then((r: BiliCidResult) => r.data[0].cid)
 		.catch((e) => {
-			throw panic('Error fetching cid', 'biliApi', biliCidUrl, e);
+			throw panic('(1)Cid获取失败', 'biliApi', biliCidUrl, e);
 		});
 
 	const biliInfoUrl = `https://api.bilibili.com/x/web-interface/view?bvid=${bvid}`;
@@ -25,7 +25,7 @@ export const load = (async ({ params, setHeaders }) => {
 		.then((r) => r.json())
 		.then((r: BiliInfoResult) => r.data)
 		.catch((e) => {
-			throw panic('Error fetching video info', 'biliApi', biliInfoUrl, e);
+			throw panic('(2)视频信息获取失败', 'biliApi', biliInfoUrl, e);
 		});
 	const coverImageUrlObj = new URL(coverImageUrlHttp);
 	coverImageUrlObj.protocol = 'https';
@@ -36,7 +36,7 @@ export const load = (async ({ params, setHeaders }) => {
 		.then((r) => r.json())
 		.then((r: BiliVideoResult) => r.data.durl[0].url)
 		.catch((e) => {
-			throw panic('Error fetching video player', 'biliApi', biliVideoUrl, e);
+			throw panic('(3)视频地址获取失败', 'biliApi', biliVideoUrl, e);
 		});
 
 	return {

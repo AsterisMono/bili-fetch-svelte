@@ -1,4 +1,4 @@
-type Components = 'biliApi';
+type Components = 'biliApi' | 'b23Parse';
 
 export type UnexpectedError = {
 	message: string;
