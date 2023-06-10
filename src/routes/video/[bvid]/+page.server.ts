@@ -8,21 +8,15 @@ export const load = (async ({ params, setHeaders }) => {
 		'Cross-Origin-Opener-Policy': 'same-origin',
 		'Cross-Origin-Embedder-Policy': 'require-corp'
 	});
+	const bvidRegex = /^BV[0-9a-zA-Z]{10}$/;
 	const bvid = params.bvid;
+	if (!bvidRegex.test(bvid)) throw error(400, { message: '请检查BV号是否正确' });
 	const biliCidUrl = `https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`;
 	const cid = await fetch(biliCidUrl)
 		.then((r) => r.json())
-		.then((r: BiliCidResult) => {
-			if (r.code == -400) {
-				throw error(500, {
-					message: '请检查BV号是否正确'
-				});
-			}
-			return r.data[0].cid;
-		})
+		.then((r: BiliCidResult) => r.data[0].cid)
 		.catch((e) => {
-			if (Object.hasOwn(e, 'status')) throw e; // Rethrow expected error, FIXME: this is ugly
-			else throw panic('Error fetching cid', 'biliApi', biliCidUrl, e);
+			throw panic('Error fetching cid', 'biliApi', biliCidUrl, e);
 		});
 
 	const biliInfoUrl = `https://api.bilibili.com/x/web-interface/view?bvid=${bvid}`;

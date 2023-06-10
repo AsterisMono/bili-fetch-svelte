@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import { message, nextStatus, status } from '$lib/utils/StatusStore';
+	import { nextStatus, nextMessage } from '$lib/utils/StatusStore';
 	import { loadFFmpeg } from '$lib/utils/FFMpegUtils';
 	import { DisplayClientError } from '$lib/utils/ClientError';
 	export let data: PageData;
