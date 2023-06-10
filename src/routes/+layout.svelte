@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '../app.css';
-	import StatusWheel from './video/[bvid]/StatusWheel.svelte';
-	import MessageBar from './video/[bvid]/MessageBar.svelte';
-	import ProgressBar from './video/[bvid]/ProgressBar.svelte';
+	import StatusWheel from '$lib/components/StatusWheel.svelte';
+	import MessageBar from '$lib/components/MessageBar.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 </script>
 
 <main class="page h-screen">
