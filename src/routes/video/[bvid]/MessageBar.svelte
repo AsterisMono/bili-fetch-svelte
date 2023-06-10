@@ -1,31 +1,22 @@
 <script lang="ts">
-	import type { StructuredMessage } from '$lib/types/StructuredMessage';
-	import { infoMessage } from '$lib/utils/StatusStore';
+	import { message } from '$lib/utils/StatusStore';
 
 	let msg = '请稍等片刻';
 	let opacity = 1;
 	let ref: HTMLParagraphElement;
-	let ongoingPromises: Promise<void>[] = [];
 
-	const statusMessageHandler = async (message: StructuredMessage) => {
-		await ongoingPromises.at(-1); // Form an await chain
-		if (message.markdown == msg) return;
-		return new Promise<void>((resolve) => {
-			if (!ref) resolve();
-			opacity = 0;
-			const onMsgHidden = () => {
-				msg = message.markdown; // TODO: Parse Markdown
-				opacity = 1;
-				ref.removeEventListener('transitionend', onMsgHidden);
-			};
-			ref.addEventListener('transitionend', onMsgHidden);
-			setTimeout(resolve, message.time || 1000);
-		});
+	const statusMessageHandler = (message: string) => {
+		if (!ref || message == msg) return;
+		opacity = 0;
+		const onMsgHidden = () => {
+			msg = message; // TODO: Parse Markdown
+			opacity = 1;
+			ref.removeEventListener('transitionend', onMsgHidden);
+		};
+		ref.addEventListener('transitionend', onMsgHidden);
 	};
 
-	infoMessage.subscribe(async (message) => {
-		ongoingPromises = [...ongoingPromises, statusMessageHandler(message)];
-	});
+	message.subscribe(statusMessageHandler);
 </script>
 
 <p

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { infoMessage, status } from '$lib/utils/StatusStore';
+	import { nextMessage, nextStatus, progress } from '$lib/utils/StatusStore';
 
-	$status.statusMessage = '( ´ﾟДﾟ`)';
-	$infoMessage.markdown = '出错了';
+	nextStatus('( ´ﾟДﾟ`)');
+	nextMessage('出错了');
+	progress.set(0);
 </script>

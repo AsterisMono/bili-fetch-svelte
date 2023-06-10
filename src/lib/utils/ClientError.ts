@@ -1,11 +1,7 @@
-import { status, infoMessage } from './StatusStore';
+import { progress, nextStatus, nextMessage } from './StatusStore';
 
-export function DisplayClientError(message: string) {
-	status.set({
-		statusMessage: '( ´ﾟДﾟ`)',
-		progress: 0
-	});
-	infoMessage.set({
-		markdown: message
-	});
+export function DisplayClientError(msg: string) {
+	nextStatus('( ´ﾟДﾟ`)');
+	nextMessage(msg);
+	progress.set(0);
 }
