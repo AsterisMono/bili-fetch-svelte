@@ -9,3 +9,7 @@
 		await updateMessage('在网址后输入BV号来开始下载', 2000);
 	});
 </script>
+
+<svelte:head>
+	<title>Bilibili音乐下载</title>
+</svelte:head>

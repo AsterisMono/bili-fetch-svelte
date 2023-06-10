@@ -1,11 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import { updateStatus, updateMessage, updateProgress } from '$lib/utils/StatusStore';
+	import { updateStatus, updateMessage, updateProgress, progress } from '$lib/utils/StatusStore';
 	import { loadFFmpeg } from '$lib/utils/FFMpegUtils';
 	import { DisplayClientError } from '$lib/utils/ClientError';
 	import { fetchFile, offerFileAsDownload } from '$lib/utils/FetchFileUtil';
 	export let data: PageData;
+	let title: string = 'Bilibili音乐下载';
+	function reactiveTitle(progress: number) {
+		if (!progress) title = 'Bilibili音乐下载';
+		else if (progress > 0 && progress < 1)
+			title = `[${Math.round(progress * 100)}%] ${data.videoTitle}`;
+		else title = `✔ ${data.videoTitle}`;
+	}
+	progress.subscribe(reactiveTitle);
 	onMount(async () => {
 		try {
 			// 1. Load FFMpeg
@@ -104,3 +112,7 @@
 		}
 	});
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
