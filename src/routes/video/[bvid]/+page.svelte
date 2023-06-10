@@ -3,7 +3,6 @@
 	import type { PageData } from './$types';
 	import { infoMessage, status } from '$lib/utils/StatusStore';
 	import { loadFFmpeg } from '$lib/utils/FFMpegUtils';
-	import { error } from '@sveltejs/kit';
 	import { DisplayClientError } from '$lib/utils/ClientError';
 	export let data: PageData;
 	onMount(async () => {
