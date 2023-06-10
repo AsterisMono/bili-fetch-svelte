@@ -31,7 +31,7 @@
 </script>
 
 <p
-	class="px-4 lg:px-0 message-bar {messageType} font-medium text-lg text-center lg:text-left tracking-wider transition-all duration-500 w-fit"
+	class="px-4 lg:px-0 message-bar {messageType} font-medium text-base lg:text-lg text-center lg:text-left tracking-wider transition-all duration-500 self-center lg:self-start w-fit"
 	style="opacity: {opacity};"
 	bind:this={ref}
 >
