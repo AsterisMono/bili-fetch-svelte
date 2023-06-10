@@ -6,6 +6,6 @@
 	onMount(async () => {
 		updateStatus('(`･∀･)');
 		await updateMessage('你好呀！', 2000);
-		await updateMessage('Bilibili音乐下载器', 2000);
+		await updateMessage('在网址后输入BV号来开始下载', 2000);
 	});
 </script>
