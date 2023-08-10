@@ -1,17 +1,38 @@
-# create-svelte
+# bili-fetch-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is a Svelte project that allows you to fetch and display data from the BiliBili API. It is powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
+## Using the Project
 
-If you're seeing this, you've probably already done this step. Congrats!
+To use this project, you first need to clone the repository and install the necessary dependencies:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
+# clone the repository
+git clone https://github.com/AsterisMono/bili-fetch-svelte.git
 
-# create a new project in my-app
-npm create svelte@latest my-app
+# navigate into the project directory
+cd bili-fetch-svelte
+
+# install the dependencies
+npm install
+```
+
+You can then start the development server with the following command:
+
+```bash
+npm run dev
+```
+
+To create a production version of the app, you can use the following command:
+
+```bash
+npm run build
+```
+
+You can preview the production build with the following command:
+
+```bash
+npm run preview
 ```
 
 ## Developing
@@ -36,3 +57,7 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Contributing
+
+If you would like to contribute to this project, you can submit issues or propose changes through pull requests. Please ensure that your code adheres to the existing style and conventions of the project.
