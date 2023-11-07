@@ -1,38 +1,22 @@
-# create-svelte
+# bili-fetch-svelte
+![Wakapi Stat](https://hourglass.amono.me/api/badge/AsterisMono/interval:any/project:bili-fetch-svelte)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+一个从Bilibili下载音乐的App
 
-## Creating a project
+[V2EX Release](https://v2ex.com/t/989277)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 亮点
+- 借助 [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) 的力量，在浏览器内完成全部处理流程，无需下载安装
+- 简洁的用户界面
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## 使用方式
+1. 将地址里的 www.bilibili.com 直接替换为 bili.amono.me
+2. 访问 https://bili.amono.me/BV号
+3. 粘贴手机App的整段分享内容到 https://bili.amono.me/ 后面
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## 开发计划
+- [ ] 支持访问剪切板中的链接，快速开始
+- [ ] 支持批量下载
+- [ ] 处理分P内容
+- [ ] 直接抓取音频流
+- [ ] PWA App
