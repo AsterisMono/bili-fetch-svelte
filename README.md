@@ -10,9 +10,11 @@
 - 简洁的用户界面
 
 ## 使用方式
-1. 将地址里的 www.bilibili.com 直接替换为 bili.amono.me
-2. 访问 https://bili.amono.me/BV号
+1. 复制一个Bilibili链接，然后访问[bili.amono.me](https://bili.amono.me)
+2. 将地址里的 www.bilibili.com 直接替换为 bili.amono.me
 3. 粘贴手机App的整段分享内容到 https://bili.amono.me/ 后面
+4. 访问 https://bili.amono.me/BV号
+（不推荐）
 
 ## 开发计划
 - [x] 支持访问剪切板中的链接，快速开始
