@@ -23,6 +23,10 @@
 		await updateStatus('(`･д･)');
 	}
 
+	async function startDownload(bvid: string) {
+		goto(`/video/${bvid}`);
+	}
+
 	async function parseClipboard() {
 		let clipboard: string | undefined = undefined;
 		try {
@@ -46,7 +50,7 @@
 		await updateMessage(getRandomLoadingPrompt(), 1500);
 		const bvid = clipboard?.match(BvidRegex);
 		if (bvid) {
-			goto(`/${bvid[0]}`);
+			startDownload(bvid[0]);
 		} else {
 			spicyFace();
 			await updateMessage('没有在剪贴板中发现BV号', 2000);
@@ -62,7 +66,7 @@
 			const bvid = clipboard?.match(BvidRegex);
 			if (bvid) {
 				clearInterval(clipboardDetectLoopTimer);
-				goto(`/${bvid[0]}`);
+				startDownload(bvid[0]);
 			}
 		} catch (e) {
 			const errorMessage = (e as { message: string }).message;
