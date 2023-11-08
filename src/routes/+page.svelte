@@ -16,7 +16,7 @@
 	}
 
 	async function requireUserClick() {
-		await updateMessage('点击这里识别你复制的链接', 2000, async () => await parseClipboard());
+		await updateMessage('点击这里识别你复制的B站链接', 2000, async () => await parseClipboard());
 	}
 
 	async function spicyFace() {
