@@ -17,6 +17,9 @@ export interface BiliInfoResult {
 			name: string;
 			face: string;
 		};
+		pages: {
+			part: string;
+		}[]
 	};
 }
 
