@@ -8,12 +8,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 };
 
 export const handleError = (async ({ error }) => {
-  // Send error analytics
+  console.error('[handleError]', JSON.stringify(error, Object.getOwnPropertyNames(error as object)));
   return {
-    message: import.meta.env.VITE_CF_PAGES_DEV
-      ? `${JSON.stringify(error)}`
-      : import.meta.env.VITE_IN_MAINTENANCE
-        ? '这个应用正处于维护模式，稍后再来吧'
-        : '喔唷，出错啦！'
+    message: '喔唷，出错啦！'
   };
 }) satisfies HandleServerError;

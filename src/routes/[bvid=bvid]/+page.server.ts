@@ -8,12 +8,11 @@ export const load = (async ({ url, params }) => {
 
   const bvid = params.bvid;
   const biliCidUrl = `https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`;
-  const cid = await fetch(biliCidUrl)
-    .then((r) => r.json())
-    .then((r: BiliCidResult) => r.data[p].cid)
-    .catch((e) => {
-      throw panic('(1)Cid获取失败', 'biliApi', biliCidUrl, e);
-    });
+  const cidRes = await fetch(biliCidUrl).then((r) => r.json()) as BiliCidResult;
+  if (!cidRes.data?.[p]) {
+    throw panic('(1)Cid获取失败', 'biliApi', biliCidUrl, cidRes);
+  }
+  const cid = cidRes.data[p].cid;
 
   const biliInfoUrl = `https://api.bilibili.com/x/web-interface/view?bvid=${bvid}`;
   const {
