@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { updateMessage, updateProgress, updateStatus } from '$lib/utils/StatusStore';
-	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+  import { updateMessage, updateProgress, updateStatus } from '$lib/utils/StatusStore';
+  import { page } from '$app/stores';
+  import { onMount } from 'svelte';
 
-	onMount(() => {
-		updateStatus('( ´ﾟДﾟ`)');
-		updateMessage($page.error?.message || '出错了');
-		updateProgress(0);
-	});
+  onMount(() => {
+    updateStatus('( ´ﾟДﾟ`)');
+    updateMessage($page.error?.message || '出错了');
+    updateProgress(0);
+  });
 </script>
 
 <svelte:head>
-	<title>出错啦！</title>
+  <title>出错啦！</title>
 </svelte:head>

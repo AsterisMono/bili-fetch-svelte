@@ -1,45 +1,45 @@
 <script lang="ts">
-	import '../app.css';
-	import StatusWheel from '$lib/components/StatusWheel.svelte';
-	import MessageBar from '$lib/components/MessageBar.svelte';
-	import ProgressBar from '$lib/components/ProgressBar.svelte';
-	import type { Snippet } from 'svelte';
+  import '../app.css';
+  import StatusWheel from '$lib/components/StatusWheel.svelte';
+  import MessageBar from '$lib/components/MessageBar.svelte';
+  import ProgressBar from '$lib/components/ProgressBar.svelte';
+  import type { Snippet } from 'svelte';
 
-	let { children }: { children: Snippet } = $props();
+  let { children }: { children: Snippet } = $props();
 </script>
 
 <main class="page h-screen">
-	<div class="relative h-full">
-		<ProgressBar />
-		<main class="w-full h-full flex flex-row">
-			<section class="w-full h-full flex flex-col justify-center">
-				<div class="mx-auto flex flex-col gap-20 lg:ml-56">
-					<StatusWheel />
-					<MessageBar />
-					{@render children()}
-				</div>
-			</section>
-		</main>
-	</div>
+  <div class="relative h-full">
+    <ProgressBar />
+    <main class="w-full h-full flex flex-row">
+      <section class="w-full h-full flex flex-col justify-center">
+        <div class="mx-auto flex flex-col gap-20 lg:ml-56">
+          <StatusWheel />
+          <MessageBar />
+          {@render children()}
+        </div>
+      </section>
+    </main>
+  </div>
 </main>
 
 <style>
-	.page {
-		background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%) center / cover;
-		background-size: 400% 400%;
-		animation: animated-gradient 8s ease infinite;
-		color: rgb(37, 37, 37);
-	}
+  .page {
+    background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%) center / cover;
+    background-size: 400% 400%;
+    animation: animated-gradient 8s ease infinite;
+    color: rgb(37, 37, 37);
+  }
 
-	@keyframes animated-gradient {
-		0% {
-			background-position: 0 0;
-		}
-		50% {
-			background-position: 50% 100%;
-		}
-		to {
-			background-position: 0 0;
-		}
-	}
+  @keyframes animated-gradient {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 50% 100%;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
 </style>

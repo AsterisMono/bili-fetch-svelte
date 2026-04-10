@@ -1,6 +1,6 @@
 {
-	"name": "bili-fetch",
-	"compatibility_flags": ["nodejs_compat"],
-	"compatibility_date": "2026-04-09",
-	"pages_build_output_dir": ".svelte-kit/cloudflare"
+  "name": "bili-fetch",
+  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_date": "2026-04-09",
+  "pages_build_output_dir": ".svelte-kit/cloudflare"
 }

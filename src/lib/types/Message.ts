@@ -1,10 +1,10 @@
 export type StaticMessage = {
-	content: string;
+  content: string;
 };
 
 export type ClickableMessage = {
-	content: string;
-	onClick: () => void;
+  content: string;
+  onClick: () => void;
 };
 
 export type Message = StaticMessage | ClickableMessage;
