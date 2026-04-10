@@ -2,14 +2,9 @@ import type { PageServerLoad } from './$types';
 import type { BiliCidResult, BiliInfoResult, BiliVideoResult } from '$lib/types/BiliTypes';
 import { panic } from '$lib/types/Error';
 
-export const load = (async ({ url, params, setHeaders }) => {
-	setHeaders({
-		'Cross-Origin-Opener-Policy': 'same-origin',
-		'Cross-Origin-Embedder-Policy': 'require-corp'
-	});
-
+export const load = (async ({ url, params }) => {
 	//获取参数中的分P的下标
-	const p = Number(url.searchParams.get("p") ?? 1) - 1;
+	const p = Number(url.searchParams.get('p') ?? 1) - 1;
 
 	const bvid = params.bvid;
 	const biliCidUrl = `https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`;

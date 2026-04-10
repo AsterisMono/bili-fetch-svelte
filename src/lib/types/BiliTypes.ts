@@ -19,7 +19,7 @@ export interface BiliInfoResult {
 		};
 		pages: {
 			part: string;
-		}[]
+		}[];
 	};
 }
 

@@ -2,9 +2,14 @@
 	import { progress } from '$lib/utils/StatusStore';
 </script>
 
-<div class="progress-bar absolute top-0 left-0" style="width: {Math.round($progress * 100)}%;" />
+<div
+	class="progress-bar absolute top-0 left-0"
+	style="width: {Math.round($progress * 100)}%;"
+></div>
 
-<style lang="postcss">
+<style>
+	@reference "tailwindcss";
+
 	.progress-bar {
 		background-color: #3392ff;
 		height: 5px;

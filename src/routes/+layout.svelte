@@ -3,6 +3,9 @@
 	import StatusWheel from '$lib/components/StatusWheel.svelte';
 	import MessageBar from '$lib/components/MessageBar.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import type { Snippet } from 'svelte';
+
+	let { children }: { children: Snippet } = $props();
 </script>
 
 <main class="page h-screen">
@@ -13,7 +16,7 @@
 				<div class="mx-auto flex flex-col gap-20 lg:ml-56">
 					<StatusWheel />
 					<MessageBar />
-					<slot />
+					{@render children()}
 				</div>
 			</section>
 		</main>

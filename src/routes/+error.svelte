@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { updateMessage, updateProgress, updateStatus, progress } from '$lib/utils/StatusStore';
+	import { updateMessage, updateProgress, updateStatus } from '$lib/utils/StatusStore';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 

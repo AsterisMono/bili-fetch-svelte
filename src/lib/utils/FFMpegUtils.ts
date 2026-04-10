@@ -1,13 +1,16 @@
-import { createFFmpeg, type FFmpeg } from '@ffmpeg/ffmpeg';
+import { FFmpeg } from '@ffmpeg/ffmpeg';
+import { toBlobURL } from '@ffmpeg/util';
 
-const ffmpeg = createFFmpeg({
-	corePath: 'https://unpkg.zhimg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
-	log: true
-}) as FFmpeg;
+let ffmpeg: FFmpeg;
 
 export async function loadFFmpeg(): Promise<FFmpeg> {
+	ffmpeg = new FFmpeg();
 	try {
-		await ffmpeg.load();
+		const baseURL = 'https://unpkg.zhimg.com/@ffmpeg/core@0.12.6/dist/esm';
+		await ffmpeg.load({
+			coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+			wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm')
+		});
 	} catch (e) {
 		if (
 			typeof e === 'object' &&

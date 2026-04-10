@@ -2,10 +2,10 @@
 	import type { Message } from '$lib/types/Message';
 	import { message } from '$lib/utils/StatusStore';
 
-	let currentMessage = '请稍等片刻';
-	let messageType = 'message-normal';
+	let currentMessage = $state('请稍等片刻');
+	let messageType = $state('message-normal');
 	let currentClickHandler: () => void = () => {};
-	let opacity = 1;
+	let opacity = $state(1);
 	let ref: HTMLParagraphElement;
 
 	const statusMessageHandler = (message: Message) => {
@@ -38,7 +38,9 @@
 	{currentMessage}
 </p>
 
-<style lang="postcss">
+<style>
+	@reference "tailwindcss";
+
 	.message-bar.message-normal {
 		@apply text-gray-500;
 	}

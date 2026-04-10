@@ -41,12 +41,14 @@ export const fetchFile = async (URL: string, progressCb: (ratio: number) => Prom
 };
 
 export function offerFileAsDownload(ffmpeg: FFmpeg, filename: string, downloadName: string) {
-	const data = ffmpeg.FS('readFile', filename);
-	let downloadEl = document.createElement('a');
-	downloadEl.download = downloadName;
-	downloadEl.style.display = 'none';
-	downloadEl.href = URL.createObjectURL(new Blob([data.buffer]));
-	document.body.appendChild(downloadEl);
-	downloadEl.click();
-	document.body.removeChild(downloadEl);
+	ffmpeg.readFile(filename).then((data) => {
+		const blob = new Blob([typeof data === 'string' ? data : (data as BlobPart)]);
+		let downloadEl = document.createElement('a');
+		downloadEl.download = downloadName;
+		downloadEl.style.display = 'none';
+		downloadEl.href = URL.createObjectURL(blob);
+		document.body.appendChild(downloadEl);
+		downloadEl.click();
+		document.body.removeChild(downloadEl);
+	});
 }

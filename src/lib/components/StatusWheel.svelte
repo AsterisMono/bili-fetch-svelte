@@ -2,7 +2,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { status } from '$lib/utils/StatusStore';
 
-	let statusList: string[] = [];
+	let statusList: string[] = $state([]);
 	status.subscribe(($statusMessage) => {
 		statusList = [...statusList, $statusMessage];
 	});
@@ -10,7 +10,7 @@
 	// Dynamic status text size with media query
 	// UI font size will be handled by CSS to avoid layout jump in SSR
 	// This text size is solely for translate value calculation
-	let statusTextSize = 4.5;
+	let statusTextSize = $state(4.5);
 
 	const respondToMediaChange = () => {
 		statusTextSize = window.matchMedia('(max-width: 640px)').matches ? 2.8 : 4.5;
@@ -25,11 +25,11 @@
 
 	// Clear the media watcher on component unload
 	onDestroy(() => {
-		if (mediaWatcher) mediaWatcher.removeEventListener('change', respondToMediaChange); // TODO: Why this unloads first?
+		if (mediaWatcher) mediaWatcher.removeEventListener('change', respondToMediaChange);
 	});
 
 	// Calculate status translateY
-	$: translateY = -2 * statusTextSize * (statusList.length - 1);
+	let translateY = $derived(-2 * statusTextSize * (statusList.length - 1));
 </script>
 
 <article class="status-wheel-frame font-light tracking-wide overflow-hidden">
@@ -43,12 +43,14 @@
 	</div>
 </article>
 
-<style lang="postcss">
+<style>
+	@reference "tailwindcss";
+
 	:root {
 		--status-text-size: 2.8rem;
 	}
 
-	@media screen(sm) {
+	@media (min-width: 640px) {
 		:root {
 			--status-text-size: 4.5rem;
 		}
